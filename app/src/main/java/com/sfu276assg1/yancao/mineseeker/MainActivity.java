@@ -1,5 +1,6 @@
 package com.sfu276assg1.yancao.mineseeker;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,18 +16,21 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import static android.R.attr.button;
+import static com.sfu276assg1.yancao.mineseeker.OptionActivity.getColInfo;
+import static com.sfu276assg1.yancao.mineseeker.OptionActivity.getNumInfo;
+import static com.sfu276assg1.yancao.mineseeker.OptionActivity.getRowInfo;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 4;
-    private static final int NUM_COLS = 8;
-    private static final int NUM_PANDAS = 10;
+    private int NUM_ROWS = 4;
+    private int NUM_COLS = 8;
+    private int NUM_PANDAS = 10;
     private static int numScan=0;
     private static int numFound=0;
 
     Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
-    TextView scanUsed; //= new TextView (this);
-    TextView foundPanda; //= new TextView (this);
+    TextView scanUsed;
+    TextView foundPanda;
 
     private Table gameGrid = new Table(NUM_ROWS,NUM_COLS,NUM_PANDAS);
 

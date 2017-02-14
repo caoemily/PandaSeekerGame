@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int NUM_ROWS = 4;
     private int NUM_COLS = 8;
-    private int NUM_PANDAS = 10;
+    private int NUM_PANDAS = 12;
     private static int numScan=0;
     private static int numFound=0;
 

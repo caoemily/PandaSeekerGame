@@ -14,7 +14,7 @@
 
 
     <TextView
-        android:text="By Yan Cao _ SongXiao"
+        android:text="By Yan Cao, Song Xiao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

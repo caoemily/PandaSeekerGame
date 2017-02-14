@@ -5,15 +5,18 @@
         <item>5</item>
         <item>6</item>
     </integer-array>
+    <integer name="default_row">4</integer>
     <integer-array name="cols">
         <item>6</item>
         <item>10</item>
         <item>15</item>
     </integer-array>
+    <integer name="default_col">6</integer>
     <integer-array name="numPanda">
         <item>6</item>
         <item>10</item>
         <item>15</item>
         <item>20</item>
     </integer-array>
+    <integer name="default_num">6</integer>
 </resources>

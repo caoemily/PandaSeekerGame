@@ -12,17 +12,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class OptionActivity extends AppCompatActivity {
-    public static final String ROW_OPTION = "row option";
-    public static final String COL_OPTION = "col option";
-    public static final String NUM_OPTION = "num option";
+
     public static final String BOARD_INFO_PREF = "boardInfoPref";
+    public static final String NUM_INFO_PREF = "numInfoPref";
     public static final String BOARD_ROW_CHOSEN = "board num chosen";
     public static final String PANDA_NUM_CHOSEN = "panda num chosen";
     public static final String BOARD_COL_CHOSEN = "boardcolchosen";
-    private int idOfBoards;
-    private int idOfNums;
-    private String boardMessage;
-    private String numMessage;
 
 
 
@@ -40,21 +35,11 @@ public class OptionActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                getBoardMessages();
-                int[] board = turnBoardMessageToInt(boardMessage);
-                int optionRow= board[0];
-                int optionCol= board[1];
-                int optionNum = Integer.parseInt(numMessage);
-                Toast.makeText(OptionActivity.this, "To play: "+
-                boardMessage+" board with "+numMessage+" pandas.", Toast.LENGTH_SHORT).show();
-                saveBoardNumInfo(optionRow,optionCol,optionNum);
-
-                Intent optionSettingIntent = new Intent(getApplicationContext(),MainActivity.class);
-//                optionSettingIntent.putExtra(ROW_OPTION,optionRow);
-//                optionSettingIntent.putExtra(COL_OPTION,optionCol);
-//                optionSettingIntent.putExtra(NUM_OPTION,optionNum);
-                startActivity(optionSettingIntent);
+                int rowtemp = getRowInfo(getApplicationContext());
+                int coltemp = getColInfo(getApplicationContext());
+                int numtemp = getNumInfo(getApplicationContext());
+                Toast.makeText(OptionActivity.this, "To play: "+ rowtemp +" * "+ coltemp +
+                        " board with "+numtemp+" pandas.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -74,6 +59,7 @@ public class OptionActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Toast.makeText(OptionActivity.this, "You choose size: "+row+"*"+col,
                             Toast.LENGTH_SHORT).show();
+                    saveBoardInfo(row,col);
                 }
             });
             boardGroup.addView(btn_boardOption);
@@ -97,6 +83,7 @@ public class OptionActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Toast.makeText(OptionActivity.this, "You choose "+num+" pandas on the board.",
                             Toast.LENGTH_SHORT).show();
+                    saveNumInfo(num);
                 }
             });
             numGroup.addView(btn_numOption);
@@ -106,23 +93,17 @@ public class OptionActivity extends AppCompatActivity {
         }
     }
 
-    private void getBoardMessages() {
-        RadioGroup boardGroup = (RadioGroup) findViewById(R.id.radioGroup_boardSize);
-        idOfBoards = boardGroup.getCheckedRadioButtonId();
-        RadioButton radioBoard =(RadioButton) findViewById(idOfBoards);
-        boardMessage = radioBoard.getText().toString();
-
-        RadioGroup numGroup = (RadioGroup) findViewById(R.id.radioGroup_num);
-        idOfNums = numGroup.getCheckedRadioButtonId();
-        RadioButton numBoard =(RadioButton) findViewById(idOfNums);
-        numMessage = numBoard.getText().toString();
-    }
-
-    private void saveBoardNumInfo(int rown,int coln, int numn){
+    private void saveBoardInfo(int rown,int coln){
         SharedPreferences prefs = this.getSharedPreferences(BOARD_INFO_PREF, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(BOARD_ROW_CHOSEN,rown);
         editor.putInt(BOARD_COL_CHOSEN,coln);
+        editor.apply();
+    }
+
+    private void saveNumInfo(int numn){
+        SharedPreferences prefs = this.getSharedPreferences(NUM_INFO_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(PANDA_NUM_CHOSEN,numn);
         editor.apply();
     }
@@ -140,26 +121,9 @@ public class OptionActivity extends AppCompatActivity {
     }
 
     static public int getNumInfo(Context context){
-        SharedPreferences prefs = context.getSharedPreferences(BOARD_INFO_PREF,MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(NUM_INFO_PREF,MODE_PRIVATE);
         int defaultNum = context.getResources().getInteger(R.integer.default_num);
         return prefs.getInt(PANDA_NUM_CHOSEN,defaultNum);
     }
-
-    private int[] turnBoardMessageToInt(String s){
-        int [] board = {0,0};
-        String rowString=s.substring(0,1);
-        String colString="";
-        for(int i=1; i<s.length(); i++){
-            char c = s.charAt(i);
-            if(!Character.isDigit(c)){
-                continue;
-            }
-            else{
-                colString+= String.valueOf(c);
-            }
-        }
-        board[0]=Integer.parseInt(rowString);
-        board[1]=Integer.parseInt(colString);
-        return board;
-    }
 }
+

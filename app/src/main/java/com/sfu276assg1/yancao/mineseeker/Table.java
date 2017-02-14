@@ -23,7 +23,7 @@ public class Table {
         // random fill the table with numPanda true entries.
         ArrayList<Integer> list = new ArrayList<Integer>();
         HashSet<Integer> set = new HashSet<Integer>();
-        for (int i=0; i<numCol*numCol; i++) {
+        for (int i=0; i<numRow*numCol; i++) {
             list.add(new Integer(i));
         }
         Collections.shuffle(list);
@@ -33,7 +33,7 @@ public class Table {
 
         for (int i=0;i<numRow;i++){
             for (int j=0;j<numCol;j++){
-                int num = i*numRow+j;
+                int num = i*numCol+j;
                 if (set.contains(num)) setPanda(i,j);
             }
         }

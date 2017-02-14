@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import static android.R.attr.button;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private static int numFound=0;
 
     Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
+    TextView scanUsed; //= new TextView (this);
+    TextView foundPanda; //= new TextView (this);
 
     private Table gameGrid = new Table(NUM_ROWS,NUM_COLS,NUM_PANDAS);
 
@@ -29,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        foundPanda = (TextView) findViewById(R.id.numFoundText);
+        foundPanda.setText("Found "+ numFound+" of " + NUM_PANDAS + " Pandas");
+
+        scanUsed = (TextView) findViewById(R.id.numScanText);
+        scanUsed.setText("# Scans used: " + numScan);
 
         populateButtons();
     }
@@ -58,12 +69,17 @@ public class MainActivity extends AppCompatActivity {
                         gridButtonClicked(FINAL_ROW, FINAL_COL);
                     }
                 });
+
                 buttons[row][col] = button;
             }
         }
     }
 
     private void gridButtonClicked(int row, int col) {
+
+        scanUsed= (TextView) findViewById(R.id.numScanText);
+        foundPanda = (TextView) findViewById(R.id.numFoundText);
+
         Button button = buttons[row][col];
         lockButtonSizes();
 
@@ -71,9 +87,11 @@ public class MainActivity extends AppCompatActivity {
             int count = gameGrid.getCountPanda(row,col);
             button.setText(""+count);
             numScan++;
+            scanUsed.setText("# Scans used: " + numScan);
         }
         else if (!gameGrid.isReveal(row,col)&&gameGrid.isPanda(row,col)){
             // show Panda pic a
+            gameGrid.reveal(row,col);
             int newWidth = button.getWidth();
             int newHeight = button.getHeight();
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pandasmall);
@@ -100,15 +118,19 @@ public class MainActivity extends AppCompatActivity {
 
             numFound++;
             numScan++;
+            scanUsed.setText("# Scans used: " + numScan);
+            foundPanda.setText("Found "+ numFound + " of " + NUM_PANDAS + " Pandas");
 
             if (numFound==NUM_PANDAS){
                 // game over and show congrates...
             }
         }
         else if (!gameGrid.isReveal(row,col)&&!gameGrid.isPanda(row,col)){
+            gameGrid.reveal(row,col);
             int count = gameGrid.getCountPanda(row,col);
             button.setText(""+count);
             numScan++;
+            scanUsed.setText("# Scans used: " + numScan);
         }
 
     }

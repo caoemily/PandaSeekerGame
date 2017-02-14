@@ -16,8 +16,9 @@ public class OptionActivity extends AppCompatActivity {
     public static final String COL_OPTION = "col option";
     public static final String NUM_OPTION = "num option";
     public static final String BOARD_INFO_PREF = "boardInfoPref";
-    public static final String BOARD_NUM_CHOSEN = "board num chosen";
+    public static final String BOARD_ROW_CHOSEN = "board num chosen";
     public static final String PANDA_NUM_CHOSEN = "panda num chosen";
+    public static final String BOARD_COL_CHOSEN = "boardcolchosen";
     private int idOfBoards;
     private int idOfNums;
     private String boardMessage;
@@ -30,8 +31,6 @@ public class OptionActivity extends AppCompatActivity {
         setBoardSize();
         setNumPanda();
         setAcceptButton();
-        int savedRow=getBoardInfo(this);
-        int savedNum=getNumInfo(this);
     }
 
     private void setAcceptButton() {
@@ -47,13 +46,14 @@ public class OptionActivity extends AppCompatActivity {
                 int optionNum = Integer.parseInt(numMessage);
                 Toast.makeText(OptionActivity.this, "To play: "+
                 boardMessage+" board with "+numMessage+" pandas.", Toast.LENGTH_SHORT).show();
-                saveBoardNumInfo(optionRow,optionNum);
+                saveBoardNumInfo(optionRow,optionCol,optionNum);
 
                 Intent optionSettingIntent = new Intent(getApplicationContext(),MainActivity.class);
-                optionSettingIntent.putExtra(ROW_OPTION,optionRow);
-                optionSettingIntent.putExtra(COL_OPTION,optionCol);
-                optionSettingIntent.putExtra(NUM_OPTION,optionNum);
+//                optionSettingIntent.putExtra(ROW_OPTION,optionRow);
+//                optionSettingIntent.putExtra(COL_OPTION,optionCol);
+//                optionSettingIntent.putExtra(NUM_OPTION,optionNum);
                 startActivity(optionSettingIntent);
+                finish();
             }
         });
     }
@@ -77,7 +77,7 @@ public class OptionActivity extends AppCompatActivity {
             boardGroup.addView(btn_boardOption);
 
             //Select default button from sharedPref:
-            if(row==getBoardInfo(this)){
+            if(row== getRowInfo(this)){
                 btn_boardOption.setChecked(true);
             }
         }
@@ -116,24 +116,32 @@ public class OptionActivity extends AppCompatActivity {
         numMessage = numBoard.getText().toString();
     }
 
-    private void saveBoardNumInfo(int boardn,int numn){
+    private void saveBoardNumInfo(int rown,int coln, int numn){
         SharedPreferences prefs = this.getSharedPreferences(BOARD_INFO_PREF, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(BOARD_NUM_CHOSEN,boardn);
+        editor.putInt(BOARD_ROW_CHOSEN,rown);
+        editor.putInt(BOARD_COL_CHOSEN,coln);
         editor.putInt(PANDA_NUM_CHOSEN,numn);
         editor.apply();
     }
 
-    static public int getBoardInfo(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("boardInfo",MODE_PRIVATE);
-        return prefs.getInt(BOARD_NUM_CHOSEN,0);
+    static public int getRowInfo(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(BOARD_INFO_PREF,MODE_PRIVATE);
+        int defaultRow = context.getResources().getInteger(R.integer.default_row);
+        return prefs.getInt(BOARD_ROW_CHOSEN,defaultRow);
+    }
+
+    static public int getColInfo(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(BOARD_INFO_PREF,MODE_PRIVATE);
+        int defaultCol = context.getResources().getInteger(R.integer.default_col);
+        return prefs.getInt(BOARD_COL_CHOSEN,defaultCol);
     }
 
     static public int getNumInfo(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("boardInfo",MODE_PRIVATE);
-        return prefs.getInt(PANDA_NUM_CHOSEN,0);
+        SharedPreferences prefs = context.getSharedPreferences(BOARD_INFO_PREF,MODE_PRIVATE);
+        int defaultNum = context.getResources().getInteger(R.integer.default_num);
+        return prefs.getInt(PANDA_NUM_CHOSEN,defaultNum);
     }
-
 
     private int[] turnBoardMessageToInt(String s){
         int [] board = {0,0};

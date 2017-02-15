@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (gameGrid.isReveal(row,col)&&gameGrid.isPanda(row,col)){
             int count = gameGrid.getCountPanda(row,col);
+            gameGrid.setNumReveal(row,col);
             button.setText(""+count);
             numScan++;
             scanUsed.setText("# Scans used: " + numScan);
@@ -118,14 +119,14 @@ public class MainActivity extends AppCompatActivity {
             String temp ="";
             int currentCount=0;
             for (int i=0;i<NUM_ROWS;i++){
-                if (gameGrid.isReveal(i,col)&&!gameGrid.isPanda(i,col)){
+                if (gameGrid.isNumReveal(i,col)){
                     temp = (String) buttons[i][col].getText();
                     currentCount = Integer.parseInt(temp)-1;
                     buttons[i][col].setText(""+currentCount);
                 }
             }
             for (int j=0;j<NUM_COLS;j++){
-                if (gameGrid.isReveal(row,j)&&!gameGrid.isPanda(row,j)){
+                if (gameGrid.isNumReveal(row,j)){
                     temp = (String) buttons[row][j].getText();
                     currentCount = Integer.parseInt(temp)-1;
                     buttons[row][j].setText(""+currentCount);
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (!gameGrid.isReveal(row,col)&&!gameGrid.isPanda(row,col)){
             gameGrid.reveal(row,col);
+            gameGrid.setNumReveal(row,col);
             int count = gameGrid.getCountPanda(row,col);
             button.setText(""+count);
             numScan++;

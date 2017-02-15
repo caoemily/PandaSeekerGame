@@ -11,6 +11,7 @@ import java.util.HashSet;
 public class Table {
     private boolean [][] table;
     private boolean [][] tableReveal;
+    private boolean [][] numReveal;
     private int NUM_ROW;
     private int NUM_COL;
 
@@ -19,6 +20,7 @@ public class Table {
         NUM_COL = numCol;
         tableReveal = new boolean[numRow][numCol];
         table = new boolean[numRow][numCol];
+        numReveal = new boolean[numRow][numCol];
 
         // random fill the table with numPanda true entries.
         ArrayList<Integer> list = new ArrayList<Integer>();
@@ -65,6 +67,14 @@ public class Table {
             if (isPanda(j,col)&&!isReveal(j,col)) count++;
         }
         return count;
+    }
+
+    boolean isNumReveal(int row, int col){
+        return numReveal[row][col];
+    }
+
+    void setNumReveal(int row, int col){
+        numReveal[row][col] = true;
     }
 
 

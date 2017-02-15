@@ -22,11 +22,11 @@ import static com.sfu276assg1.yancao.mineseeker.OptionActivity.getRowInfo;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int NUM_ROWS = 4;
-    private int NUM_COLS = 8;
-    private int NUM_PANDAS = 12;
-    private static int numScan=0;
-    private static int numFound=0;
+    private int NUM_ROWS = 0;
+    private int NUM_COLS = 0;
+    private int NUM_PANDAS = 0;
+    private int numScan=0;
+    private int numFound=0;
 
     Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
     TextView scanUsed;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        update();
+
         foundPanda = (TextView) findViewById(R.id.numFoundText);
         foundPanda.setText("Found "+ numFound+" of " + NUM_PANDAS + " Pandas");
 
@@ -48,7 +50,17 @@ public class MainActivity extends AppCompatActivity {
         populateButtons();
     }
 
+    private void update() {
+        NUM_ROWS = OptionActivity.getRowInfo(this);
+        NUM_COLS = OptionActivity.getColInfo(this);
+        NUM_PANDAS = OptionActivity.getNumInfo(this);
+
+        buttons = new Button[NUM_ROWS][NUM_COLS];
+        gameGrid = new Table(NUM_ROWS,NUM_COLS,NUM_PANDAS);
+    }
+
     private void populateButtons() {
+
         TableLayout table = (TableLayout) findViewById(R.id.gameTable);
         for (int row =0; row<NUM_ROWS;row++){
             TableRow tableRow = new TableRow(this);
@@ -80,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gridButtonClicked(int row, int col) {
-
         scanUsed= (TextView) findViewById(R.id.numScanText);
         foundPanda = (TextView) findViewById(R.id.numFoundText);
 
@@ -140,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void lockButtonSizes() {
+
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
                 Button button = buttons[row][col];

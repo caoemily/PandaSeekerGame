@@ -12,7 +12,7 @@
     android:background="@drawable/background">
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/numFoundText"
@@ -33,7 +33,7 @@
     </TableLayout>
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/numScanText"

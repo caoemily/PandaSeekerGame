@@ -14,7 +14,7 @@
 
 
     <TextView
-        android:text="By Yan Cao, Song Xiao"
+        android:text="@string/by_yan_cao_song_xiao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -25,7 +25,7 @@
         android:textStyle="normal|bold" />
 
     <TextView
-        android:text="Panda Seeker"
+        android:text="@string/panda_seeker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_gamename"
@@ -36,7 +36,7 @@
         android:textStyle="normal|bold" />
 
     <Button
-        android:text="Skip"
+        android:text="@string/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -45,7 +45,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="Welcome "
+        android:text="@string/welcome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

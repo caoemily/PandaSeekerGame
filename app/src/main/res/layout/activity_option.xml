@@ -15,12 +15,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
+        <TextView
+            android:text="Settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="200dp"
+            android:id="@+id/textView3"
+            android:textStyle="normal|bold"
+            android:textSize="30sp"
+            android:textColor="@android:color/background_dark" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="100dp"
 
             android:id="@+id/radioGroup_boardSize" >
@@ -32,14 +50,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="false"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="130dp"
             android:id="@+id/radioGroup_num" />
     </TableRow>
 
+    <Button
+        android:text="@string/accept_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_AcceptOptions"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="89dp" />
+
     <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true">
@@ -73,14 +101,5 @@
             android:layout_weight="1" />
 
     </TableRow>
-
-    <Button
-        android:text="@string/accept_options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_AcceptOptions"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="89dp" />
 
 </RelativeLayout>

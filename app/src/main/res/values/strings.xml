@@ -12,4 +12,14 @@
     <string name="panda_seeker">Panda Seeker</string>
     <string name="skip">Skip</string>
     <string name="welcome">Welcome</string>
+    <string name="this_game_is_built_by_yan_cao_and_song_xiao_to_fulfill_the_requirement_of_cmpt276">This game is built by Yan Cao and Song Xiao, to fulfill the requirement of CMPT276.</string>
+    <string name="courselink">CourseLink</string>
+    <string name="picture_of_background_is_taken_from_course_web_and_pictures_of_pandas_are_taken_from_link_below">Picture of background is taken from course web, and pictures of pandas are taken from link below.</string>
+    <string name="picturelink">PictureLink</string>
+    <string name="secondpiclink">SecondPIcLink</string>
+    <string name="other_than_playing_the_game_you_may_set_the_total_number_of_pandas_and_the_size_of_the_game_board_by_clicking_the_option_button_in_the_main_page_by_clicking_accept_options_or_tap_the_back_button_your_setting_is_saved_your_settings_are_remembered_next_time_you_play_this_game">Other than playing the game, you may set the total number of Pandas and the size of the game board by clicking the OPTION button in the main page. By clicking ACCEPT OPTIONS or tap the back button, your setting is saved. Your settings are remembered next time you play this game.</string>
+    <string name="help1">Help</string>
+    <string name="after_clicking_play_game_a_game_board_is_shown_there_are_a_bunch_of_cells_on_the_game_board_you_may_find_a_panda_in_one_cell_by_clicking_it_otherwise_a_number_is_shown_indicating_the_count_of_hidden_pandas_in_the_same_row_and_column_as_the_selected_cell_the_total_number_of_pandas_and_how_many_have_been_found_are_shown_on_the_top_left_corner_of_your_screen_your_goal_is_to_find_all_the_pandas_with_minimum_number_of_scans">After clicking PLAY GAME!, a game board is shown. There are a bunch of cells on the game board. You may find a Panda in one cell by clicking it. Otherwise, a number is shown indicating the count of hidden Pandas in the same row and column as the selected cell. The total number of Pandas and how many have been found are shown on the top left corner of your screen. Your goal is to find all the Pandas with minimum number of scans.</string>
+    <string name="welcome_to_the_territory_of_pandas_in_this_game_your_goal_is_to_find_all_pandas_in_the_board">Welcome to the territory of Pandas! In this game, your goal is to find all pandas in the board.</string>
+    <string name="enjoy_the_game_and_have_fun">Enjoy the game and Have Fun!</string>
 </resources>

@@ -9,28 +9,118 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sfu276assg1.yancao.mineseeker.HelpActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/optionbackgroud">
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:text="@string/this_game_is_built_by_yan_cao_and_song_xiao_to_fulfill_the_requirement_of_cmpt276"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_helpContent"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="normal|bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp" />
+
+    <TextView
+        android:text="@string/courselink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_helpContent"
+        android:layout_marginTop="21dp"
+        android:id="@+id/text_courseLink"
+        android:textColor="@android:color/background_light"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:textSize="12sp" />
+
+    <TextView
+        android:text="@string/picture_of_background_is_taken_from_course_web_and_pictures_of_pandas_are_taken_from_link_below"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:textColor="@android:color/background_dark"
+        android:textSize="12sp"
+        android:layout_below="@+id/text_courseLink"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/picturelink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_picLink"
+        android:textSize="12sp"
+        android:textColor="@android:color/background_light"
+        android:layout_below="@+id/text"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/secondpiclink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_toEndOf="@+id/text_picLink"
+        android:layout_marginStart="20dp"
+        android:id="@+id/text_picSmall"
+        android:textSize="12sp"
+        android:textColor="@android:color/background_light"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:text="@string/welcome_to_the_territory_of_pandas_in_this_game_your_goal_is_to_find_all_pandas_in_the_board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInfo"
+        android:textColor="@android:color/background_dark"
+        android:lineSpacingExtra="3sp"
+        android:textSize="13sp"
         android:layout_below="@+id/text_helpHelp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="14dp"
-        android:id="@+id/text_helpContent"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textStyle="normal|bold" />
+        android:layout_marginTop="12dp" />
 
     <TextView
-        android:text="Help"
+        android:text="@string/help1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_helpHelp"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:layout_alignParentTop="true"
+        />
+
+    <TextView
+        android:text="@string/after_clicking_play_game_a_game_board_is_shown_there_are_a_bunch_of_cells_on_the_game_board_you_may_find_a_panda_in_one_cell_by_clicking_it_otherwise_a_number_is_shown_indicating_the_count_of_hidden_pandas_in_the_same_row_and_column_as_the_selected_cell_the_total_number_of_pandas_and_how_many_have_been_found_are_shown_on_the_top_left_corner_of_your_screen_your_goal_is_to_find_all_the_pandas_with_minimum_number_of_scans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="13sp"
+        android:textColor="@android:color/background_dark"
+        android:layout_below="@+id/textInfo"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="232dp" />
+        android:lineSpacingExtra="2sp" />
+
+    <TextView
+        android:text="@string/other_than_playing_the_game_you_may_set_the_total_number_of_pandas_and_the_size_of_the_game_board_by_clicking_the_option_button_in_the_main_page_by_clicking_accept_options_or_tap_the_back_button_your_setting_is_saved_your_settings_are_remembered_next_time_you_play_this_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="13sp"
+        android:textColor="@android:color/background_dark"
+        android:lineSpacingExtra="2sp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/enjoy_the_game_and_have_fun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textStyle="normal|bold"
+        android:textSize="13sp"
+        android:textColor="@android:color/background_dark"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/text_helpHelp" />
 </RelativeLayout>

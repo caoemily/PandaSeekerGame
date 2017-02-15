@@ -65,11 +65,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/mainpanda"
         android:id="@+id/imageView"
         android:scaleType="fitCenter"
-        android:layout_below="@+id/text_mainMenu"
-        android:layout_toEndOf="@+id/btn_option"
-        android:layout_marginStart="66dp" />
+        android:layout_alignParentBottom="false"
+        android:layout_toEndOf="@+id/text_mainMenu" />
 
 </RelativeLayout>

@@ -1,6 +1,10 @@
 package com.sfu276assg1.yancao.mineseeker;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,4 +50,5 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
     }
+
 }

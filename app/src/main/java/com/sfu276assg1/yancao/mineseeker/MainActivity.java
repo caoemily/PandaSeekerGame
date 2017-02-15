@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
+
             String temp ="";
             int currentCount=0;
             for (int i=0;i<NUM_ROWS;i++){

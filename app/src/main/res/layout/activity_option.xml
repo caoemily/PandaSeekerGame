@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sfu276assg1.yancao.mineseeker.OptionActivity"
-    android:background="@drawable/optionbackgroud">
+    android:background="@drawable/backgroundlight">
 
     <TableRow
         android:layout_width="wrap_content"

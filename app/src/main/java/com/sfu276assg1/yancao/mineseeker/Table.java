@@ -9,9 +9,9 @@ import java.util.HashSet;
  */
 
 public class Table {
-    private boolean [][] table;
-    private boolean [][] tableReveal;
-    private boolean [][] numReveal;
+    private boolean [][] table;         //true if table[row][col] is a Panda
+    private boolean [][] tableReveal;   //true if tableReveal[row][col] is revealed by user
+    private boolean [][] numReveal;     //true if numReveal[row][col] reveals the number of Pandas in relevent cells
     private int NUM_ROW;
     private int NUM_COL;
 
@@ -22,7 +22,7 @@ public class Table {
         table = new boolean[numRow][numCol];
         numReveal = new boolean[numRow][numCol];
 
-        // random fill the table with numPanda true entries.
+        // initialize the table: random fill the table with numPanda true entries.
         ArrayList<Integer> list = new ArrayList<Integer>();
         HashSet<Integer> set = new HashSet<Integer>();
         for (int i=0; i<numRow*numCol; i++) {
@@ -32,14 +32,12 @@ public class Table {
         for (int i=0; i<numPanda; i++) {
             set.add(list.get(i));
         }
-
         for (int i=0;i<numRow;i++){
             for (int j=0;j<numCol;j++){
                 int num = i*numCol+j;
                 if (set.contains(num)) setPanda(i,j);
             }
         }
-
     }
 
     void reveal(int row, int col){
@@ -58,6 +56,14 @@ public class Table {
         return table[row][col];
     }
 
+    void setNumReveal(int row, int col){
+        numReveal[row][col] = true;
+    }
+
+    boolean isNumReveal(int row, int col){
+        return numReveal[row][col];
+    }
+
     int getCountPanda(int row, int col){
         int count=0;
         for (int i=0;i<NUM_COL;i++){
@@ -68,14 +74,5 @@ public class Table {
         }
         return count;
     }
-
-    boolean isNumReveal(int row, int col){
-        return numReveal[row][col];
-    }
-
-    void setNumReveal(int row, int col){
-        numReveal[row][col] = true;
-    }
-
-
 }
+

@@ -22,41 +22,39 @@ import static com.sfu276assg1.yancao.mineseeker.OptionActivity.getRowInfo;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int NUM_ROWS = 0;
-    private int NUM_COLS = 0;
-    private int NUM_PANDAS = 0;
+    private int NUM_ROWS;
+    private int NUM_COLS;
+    private int NUM_PANDAS;
     private int numScan=0;
     private int numFound=0;
 
-    Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
+    private Table gameGrid;
+    Button buttons[][];
     TextView scanUsed;
     TextView foundPanda;
-
-    private Table gameGrid = new Table(NUM_ROWS,NUM_COLS,NUM_PANDAS);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        update();
-
-        foundPanda = (TextView) findViewById(R.id.numFoundText);
-        foundPanda.setText("Found "+ numFound+" of " + NUM_PANDAS + " Pandas");
-
-        scanUsed = (TextView) findViewById(R.id.numScanText);
-        scanUsed.setText("# Scans used: " + numScan);
-
+        initializeGame();
         populateButtons();
     }
 
-    private void update() {
+    private void initializeGame() {
         NUM_ROWS = OptionActivity.getRowInfo(this);
         NUM_COLS = OptionActivity.getColInfo(this);
         NUM_PANDAS = OptionActivity.getNumInfo(this);
 
         buttons = new Button[NUM_ROWS][NUM_COLS];
         gameGrid = new Table(NUM_ROWS,NUM_COLS,NUM_PANDAS);
+
+        foundPanda = (TextView) findViewById(R.id.numFoundText);
+        foundPanda.setText("Found "+ numFound+" of " + NUM_PANDAS + " Pandas");
+
+        scanUsed = (TextView) findViewById(R.id.numScanText);
+        scanUsed.setText("# Scans used: " + numScan);
     }
 
     private void populateButtons() {
@@ -85,29 +83,26 @@ public class MainActivity extends AppCompatActivity {
                         gridButtonClicked(FINAL_ROW, FINAL_COL);
                     }
                 });
-
                 buttons[row][col] = button;
             }
         }
     }
 
     private void gridButtonClicked(int row, int col) {
-        scanUsed= (TextView) findViewById(R.id.numScanText);
-        foundPanda = (TextView) findViewById(R.id.numFoundText);
 
         Button button = buttons[row][col];
         lockButtonSizes();
 
         if (gameGrid.isReveal(row,col)&&gameGrid.isPanda(row,col)){
-            int count = gameGrid.getCountPanda(row,col);
-            gameGrid.setNumReveal(row,col);
-            button.setText(""+count);
-            numScan++;
-            scanUsed.setText("# Scans used: " + numScan);
+            if (!gameGrid.isNumReveal(row,col)){
+                gameGrid.setNumReveal(row,col);
+                int count = gameGrid.getCountPanda(row,col);
+                button.setText(""+count);
+                numScan++;
+                scanUsed.setText("# Scans used: " + numScan);
+            }
         }
         else if (!gameGrid.isReveal(row,col)&&gameGrid.isPanda(row,col)){
-            // show Panda pic a
-            gameGrid.reveal(row,col);
             int newWidth = button.getWidth();
             int newHeight = button.getHeight();
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pandasmall);
@@ -115,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
-
+            gameGrid.reveal(row,col);
             String temp ="";
             int currentCount=0;
             for (int i=0;i<NUM_ROWS;i++){

@@ -8,6 +8,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (gameGrid.isReveal(row,col)&&gameGrid.isPanda(row,col)){
             if (!gameGrid.isNumReveal(row,col)){
+                setRowAnimation(row,col);
                 gameGrid.setNumReveal(row,col);
                 int count = gameGrid.getCountPanda(row,col);
                 button.setText(""+count);
@@ -138,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if (!gameGrid.isReveal(row,col)&&!gameGrid.isPanda(row,col)){
+            setRowAnimation(row, col);
             gameGrid.reveal(row,col);
             gameGrid.setNumReveal(row,col);
             int count = gameGrid.getCountPanda(row,col);
@@ -146,6 +151,17 @@ public class MainActivity extends AppCompatActivity {
             scanUsed.setText("# Scans used: " + numScan);
         }
 
+    }
+
+    private void setRowAnimation(int row, int col){
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.scan);
+        LayoutAnimationController controller = new LayoutAnimationController(anim);
+        TableLayout table = (TableLayout) findViewById(R.id.gameTable);
+        TableRow clickedrow = (TableRow)table.getChildAt(row);
+        clickedrow.setLayoutAnimation(controller);
+        for(int i=0; i<NUM_ROWS;i++){
+            (buttons[i][col]).setAnimation(anim);
+        }
     }
 
     private void lockButtonSizes() {

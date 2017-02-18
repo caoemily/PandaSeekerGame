@@ -19,8 +19,6 @@ public class OptionActivity extends AppCompatActivity {
     public static final String PANDA_NUM_CHOSEN = "panda num chosen";
     public static final String BOARD_COL_CHOSEN = "boardcolchosen";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +36,6 @@ public class OptionActivity extends AppCompatActivity {
                 int rowtemp = getRowInfo(getApplicationContext());
                 int coltemp = getColInfo(getApplicationContext());
                 int numtemp = getNumInfo(getApplicationContext());
-                Toast.makeText(OptionActivity.this, "To play: "+ rowtemp +" * "+ coltemp +
-                        " board with "+numtemp+" pandas.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -57,14 +53,11 @@ public class OptionActivity extends AppCompatActivity {
             btn_boardOption.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(OptionActivity.this, "You choose size: "+row+"*"+col,
-                            Toast.LENGTH_SHORT).show();
                     saveBoardInfo(row,col);
                 }
             });
             boardGroup.addView(btn_boardOption);
 
-            //Select default button from sharedPref:
             if(row== getRowInfo(this)){
                 btn_boardOption.setChecked(true);
             }
@@ -81,12 +74,11 @@ public class OptionActivity extends AppCompatActivity {
             btn_numOption.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(OptionActivity.this, "You choose "+num+" pandas on the board.",
-                            Toast.LENGTH_SHORT).show();
                     saveNumInfo(num);
                 }
             });
             numGroup.addView(btn_numOption);
+
             if(num==getNumInfo(this)){
                 btn_numOption.setChecked(true);
             }

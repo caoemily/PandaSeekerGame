@@ -22,4 +22,6 @@
     <string name="after_clicking_play_game_a_game_board_is_shown_there_are_a_bunch_of_cells_on_the_game_board_you_may_find_a_panda_in_one_cell_by_clicking_it_otherwise_a_number_is_shown_indicating_the_count_of_hidden_pandas_in_the_same_row_and_column_as_the_selected_cell_the_total_number_of_pandas_and_how_many_have_been_found_are_shown_on_the_top_left_corner_of_your_screen_your_goal_is_to_find_all_the_pandas_with_minimum_number_of_scans">After clicking PLAY GAME!, a game board is shown. There are a bunch of cells on the game board. You may find a Panda in one cell by clicking it. Otherwise, a number is shown indicating the count of hidden Pandas in the same row and column as the selected cell. The total number of Pandas and how many have been found are shown on the top left corner of your screen. Your goal is to find all the Pandas with minimum number of scans.</string>
     <string name="welcome_to_the_territory_of_pandas_in_this_game_your_goal_is_to_find_all_pandas_in_the_board">Welcome to the territory of Pandas! In this game, your goal is to find all pandas in the board.</string>
     <string name="enjoy_the_game_and_have_fun">Enjoy the game and Have Fun!</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="settings">Settings</string>
 </resources>

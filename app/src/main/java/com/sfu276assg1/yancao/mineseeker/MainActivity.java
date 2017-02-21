@@ -1,5 +1,6 @@
 package com.sfu276assg1.yancao.mineseeker;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -92,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gridButtonClicked(int row, int col) {
-
         Button button = buttons[row][col];
         lockButtonSizes();
 
@@ -133,12 +133,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             numFound++;
-            numScan++;
             scanUsed.setText("# Scans used: " + numScan);
             foundPanda.setText("Found "+ numFound + " of " + NUM_PANDAS + " Pandas");
 
             if (numFound==NUM_PANDAS){
-                // game over and show congrates...
+                initiateDialog();
             }
         }
         else if (!gameGrid.isReveal(row,col)&&!gameGrid.isPanda(row,col)){
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void lockButtonSizes() {
-
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
                 Button button = buttons[row][col];
@@ -180,4 +178,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void initiateDialog() {
+        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        CongratDialog dialog = new CongratDialog();
+        dialog.show(manager,"CongratDialog");
+    }
+
 }

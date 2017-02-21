@@ -16,11 +16,9 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:text="Settings"
+            android:text="@string/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="false"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="200dp"
             android:id="@+id/textView3"
@@ -36,8 +34,6 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="100dp"
 
@@ -48,8 +44,6 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="false"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="130dp"
             android:id="@+id/radioGroup_num" />
@@ -82,16 +76,12 @@
             android:textColor="@android:color/background_dark"
             android:layout_marginStart="103dp"
             android:layout_weight="1"
-            android:layout_marginTop="20dp"
-            android:layout_alignBottom="@+id/radioGroup2"
-            android:layout_toEndOf="@+id/radioGroup2" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:text="@string/pandas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/text_boarSize"
-            android:layout_alignParentEnd="true"
             android:layout_marginEnd="89dp"
             android:layout_marginTop="20dp"
             android:id="@+id/text_Num"

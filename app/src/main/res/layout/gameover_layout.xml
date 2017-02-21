@@ -12,7 +12,7 @@
         android:id="@+id/cong_image" />
 
     <TextView
-        android:text="Congratulations!"
+        android:text="@string/congratulations"
         android:id="@+id/cong_msg"
         android:textSize="20sp"
         android:layout_width="wrap_content"
